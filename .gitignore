@@ -1,0 +1,14 @@
+# Python / Flask
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+.venv/
+
+# Secrets and Local Files
+.env
+
+# Uploads Folder
+# This folder contains user-uploaded images, which shouldn't be in Git history.
+uploads/
