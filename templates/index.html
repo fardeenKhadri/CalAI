@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Calorie Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="{{ url_for('index') }}">Analyze Meal</a>
+                <a href="{{ url_for('history') }}">View History</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="text-center">Cal AI</h1>
+            <p class="text-center">Upload an image of your meal to get a detailed nutritional breakdown from Gemini.</p>
+
+            <div class="card">
+                <h2>1. Upload Your Meal Photo</h2>
+                <form id="upload-form" enctype="multipart/form-data">
+                    <label for="image-upload">Select or Drop Your Food Image (PNG, JPG, WEBP)</label>
+                    <input type="file" id="image-upload" name="image" accept="image/png, image/jpeg, image/webp" required>
+                    
+                    <label for="meal-type">Meal Type</label>
+                    <select id="meal-type" name="meal_type" required>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="snack" selected>Snack</option>
+                    </select>
+
+                    <button type="submit" class="btn-primary" style="width: 100%;">Analyze Meal</button>
+                </form>
+            </div>
+
+            <div id="loading" class="text-center hidden">
+                <span class="loader"></span>
+                <p>Analyzing image with Gemini... Please wait, this may take a moment.</p>
+            </div>
+
+            <div id="analysis-results" class="card hidden">
+                </div>
+
+            <div id="reanalysis-section" class="card hidden">
+                <h2>2. Need Adjustments? (Optional)</h2>
+                <p>If the analysis looks incorrect, provide details to refine the results (e.g., "I only ate half of the avocado" or "That's 150 grams of chicken breast").</p>
+                <textarea id="reanalysis-input" placeholder="Type your modifications here..." rows="3"></textarea>
+                <div class="text-center">
+                    <button id="reanalyze-btn" class="btn-secondary">Re-Analyze with Modifications</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal History - Gemini Calorie Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="{{ url_for('index') }}">Analyze Meal</a>
+                <a href="{{ url_for('history') }}">View History</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="text-center">Your Calorie & Macro History</h1>
+            <p class="text-center">Review your logged meals and track your daily totals.</p>
+
+            <div class="card">
+                <h2>Select Day</h2>
+                <div class="date-selector-container">
+                    <select id="history-date-select">
+                        <option value="">Loading Dates...</option>
+                    </select>
+                    <span id="date-display"></span>
+                </div>
+            </div>
+
+            <div id="daily-totals" class="daily-totals hidden">
+                </div>
+
+            <div id="daily-history-container">
+                <p class="text-center">Select a date above to view your meal history.</p>
+                </div>
+            
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
